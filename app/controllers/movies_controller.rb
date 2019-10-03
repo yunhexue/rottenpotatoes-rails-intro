@@ -48,6 +48,7 @@ class MoviesController < ApplicationController
       @now_ratings = params[:ratings].keys
     else
       @now_ratings = @all_ratings
+    end
     sort = params["sort"]
     @movies = Movie.with_ratings(@now_ratings).order(sort)
     
