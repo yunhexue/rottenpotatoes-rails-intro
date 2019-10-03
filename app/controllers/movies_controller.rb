@@ -11,7 +11,40 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all
+    # sort_by = params[:sort_by] || session[:sort_by]
+    
+    # session[:sort_by] = sort_by
+    # @table_header = 'hilite' if sort_by == 'title'
+    # @release_data_header = 'hilite' if sort_by == 'release_date'
+    
+    # @all_ratings = Movie.ratings
+    
+    # # temp = {}
+    
+    # # @all_ratings.each do |x|
+    # #   temp[x] = 1
+    # # end
+    
+    # if params.keys.include? "ratings"
+    #   @ratings = params[:ratings].keys if params[:ratings].is_a? Hash
+    #   @ratings = params[:ratings] if params[:ratings].is_a? Array
+    # elsif session.keys.include? "ratings"
+    #   @ratings = session[:ratings]
+    # else
+    #   @ratings = @all_ratings
+    # end
+    
+    
+    # session[:ratings] = @ratings
+    
+    # redirect_to movies_path(:sort_by => session[:sort_by], :ratings => session[:ratings]) if !((params.keys.include? 'sort_by') || (params.keys.include? 'ratings'))
+    # # session[:ratings] = params[:ratings].keys if params.keys.include? "ratings"
+    # # @ratings = session[:ratings]
+    # @movies = Movie.where(:rating => @ratings).order(sort_by)
+    sort = params["sort"]
+    @movies = Movie.order(sort)
+    
+
   end
 
   def new
